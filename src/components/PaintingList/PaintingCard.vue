@@ -19,6 +19,7 @@ defineProps(["painting"]);
 .painting-card {
   flex: 0 1 392px;
   height: auto;
+  max-height: 260px;
   aspect-ratio: 3 / 2;
   position: relative;
 

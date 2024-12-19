@@ -1,6 +1,6 @@
 <template>
   <section class="painting">
-    <PaintingSearch @search="store.fetchPaintings($event)" />
+    <PaintingSearch @search="store.fetchPaintings($event, 1)" />
     <div class="painting-list">
       <PaintingCard
         v-for="painting in store.paintings"
@@ -36,5 +36,6 @@ onMounted(() => {
   justify-content: center;
   flex-wrap: wrap;
   gap: 32px;
+  min-height: 570px;
 }
 </style>
