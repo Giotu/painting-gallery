@@ -1,6 +1,6 @@
 <template>
   <section class="painting">
-    <PaintingSearch />
+    <PaintingSearch @search="store.fetchPaintings($event)" />
     <div class="painting-list">
       <PaintingCard
         v-for="painting in store.paintings"

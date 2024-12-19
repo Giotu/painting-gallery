@@ -1,21 +1,31 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
+import type { Painting } from "@/types/Painting";
+import type { Params } from "@/types/Params";
 
 const usePaintingsStore = defineStore("paintings", () => {
   const countPages = ref(0);
   const currentPage = ref(1);
-  const paintings = ref([]);
+  const paintings = ref<Painting[]>([]);
 
-  const fetchPaintings = async () => {
+  const fetchPaintings = async (
+    query?: string,
+    page: number = currentPage.value,
+  ) => {
     try {
+      const params: Params = {
+        _page: page,
+        _limit: 6,
+      };
+
+      if (query) {
+        params.q = query;
+      }
       const response = await axios.get(
         "https://test-front.framework.team/paintings",
         {
-          params: {
-            _page: currentPage.value,
-            _limit: 6,
-          },
+          params,
         },
       );
       paintings.value = response.data;

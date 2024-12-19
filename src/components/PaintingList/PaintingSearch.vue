@@ -13,19 +13,36 @@
         fill="#DEDEDE"
       />
     </svg>
-    <form>
+    <form @submit.prevent>
       <input
         id="search"
+        v-model="searchQuery"
         class="painting-search__input"
         type="text"
         placeholder="Painting title"
+        @input="handleSearch"
       />
       <label for="search"></label>
     </form>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const emit = defineEmits(["search"]);
+
+const searchQuery = ref("");
+
+function debounceHandleSearch(ms: number) {
+  let timeout: number;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => emit("search", searchQuery.value), ms);
+  };
+}
+const handleSearch = debounceHandleSearch(1000);
+</script>
 
 <style scoped lang="scss">
 @import "../../assets/styles/index.scss";
