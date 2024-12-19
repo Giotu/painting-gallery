@@ -1,25 +1,31 @@
 <template>
   <div class="painting-card">
-    <img src="/image1.png" alt="test" />
+    <img :src="baseUrl + painting.imageUrl" :alt="painting.name" />
     <div class="painting-card__info">
-      <span class="painting-card__name">cascate di tivoli</span>
-      <span class="painting-card__date">1761</span>
+      <span class="painting-card__name">{{ painting.name }}</span>
+      <span class="painting-card__date">{{ painting.created }}</span>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const baseUrl = "https://test-front.framework.team";
+defineProps(["painting"]);
+</script>
 
 <style scoped lang="scss">
 @import "../../assets/styles/index.scss";
 
 .painting-card {
-  max-width: 392px;
-  max-height: 260px;
+  flex: 0 1 392px;
+  height: auto;
+  aspect-ratio: 3 / 2;
   position: relative;
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .painting-card__info {
