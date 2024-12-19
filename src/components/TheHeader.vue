@@ -15,6 +15,7 @@ import TheIcon from "./TheIcon.vue";
   padding-block: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   & > .icon,
   & > .button-theme {

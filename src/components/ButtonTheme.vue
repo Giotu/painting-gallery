@@ -9,7 +9,7 @@ import IconTheme from "./IconTheme.vue";
 </template>
 
 <style scoped lang="scss">
-@use "../assets/styles/index.scss";
+@use "../assets/styles/variables.scss";
 .button-theme {
   height: 40px;
   width: 40px;
