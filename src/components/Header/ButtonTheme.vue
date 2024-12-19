@@ -9,12 +9,12 @@ import IconTheme from "./IconTheme.vue";
 </template>
 
 <style scoped lang="scss">
-@use "../assets/styles/variables.scss";
+@import "../../assets/styles/index.scss";
 .button-theme {
   height: 40px;
   width: 40px;
   border-radius: 50%;
   border: none;
-  background-color: variables.$secondary-black;
+  background-color: $secondary-black;
 }
 </style>

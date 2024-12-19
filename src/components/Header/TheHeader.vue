@@ -17,8 +17,8 @@ import TheIcon from "./TheIcon.vue";
   justify-content: space-between;
   align-items: center;
 
-  & > .icon,
-  & > .button-theme {
+  .icon,
+  .button-theme {
     cursor: pointer;
   }
 }

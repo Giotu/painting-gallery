@@ -1,2 +1,15 @@
-@use "./variables.scss";
-@use "./global.scss";
+@font-face {
+  font-family: "Cormorant SC";
+  src: url("../fonts/CormorantSC-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cormorant SC";
+  src: url("../fonts/CormorantSC-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@import "./variables.scss";
+@import "./global.scss";
