@@ -8,6 +8,13 @@ import eslintPlugin from "vite-plugin-eslint";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), vueDevTools(), eslintPlugin()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
