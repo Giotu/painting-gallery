@@ -75,6 +75,7 @@ const dispayPages = computed(() => {
 .pagination {
   display: flex;
   gap: 20px;
+  margin-bottom: 40px;
 }
 
 .buttons-container {

@@ -17,11 +17,19 @@ defineProps(["painting"]);
 @import "../../assets/styles/index.scss";
 
 .painting-card {
-  flex: 0 1 392px;
+  flex: 0 1 clamp(17.5rem, 15.1667rem + 11.6667vw, 24.5rem);
   height: auto;
   max-height: 260px;
   aspect-ratio: 3 / 2;
   position: relative;
+
+  // @media (max-width: 1024px) {
+  //   flex: 0 1;
+  // }
+
+  // @media (max-width: 767px) {
+  //   flex: 0 1
+  // }
 
   img {
     width: 100%;
@@ -38,9 +46,12 @@ defineProps(["painting"]);
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-width: 300px;
+    max-width: clamp(14.75rem, 13.4167rem + 6.6667vw, 18.75rem);
     width: 100%;
-    margin-right: 52px;
+
+    @media (max-width: 768px) {
+      padding: 12px;
+    }
   }
 
   .painting-card__name,

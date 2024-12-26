@@ -37,5 +37,9 @@ onMounted(() => {
   flex-wrap: wrap;
   gap: 32px;
   min-height: 570px;
+
+  @media (max-width: 1024px) {
+    gap: 24px;
+  }
 }
 </style>
