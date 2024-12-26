@@ -21,6 +21,8 @@ const store = usePaintingsStore();
 
 onMounted(() => {
   store.fetchPaintings();
+  store.fetchAuthors();
+  store.fetchLocations();
 });
 </script>
 

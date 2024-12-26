@@ -3,11 +3,15 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import type { Painting } from "@/types/Painting";
 import type { Params } from "@/types/Params";
+import type { Author } from "@/types/Author";
+import type { Location } from "@/types/Location";
 
 const usePaintingsStore = defineStore("paintings", () => {
   const countPages = ref(0);
   const currentPage = ref(1);
   const paintings = ref<Painting[]>([]);
+  const authors = ref<Author[]>([]);
+  const locations = ref<Location[]>([]);
   const searchQuery = ref("");
 
   const fetchPaintings = async (
@@ -38,7 +42,39 @@ const usePaintingsStore = defineStore("paintings", () => {
     }
   };
 
-  return { paintings, fetchPaintings, countPages, currentPage, searchQuery };
+  const fetchAuthors = async () => {
+    try {
+      const response = await axios.get(
+        "https://test-front.framework.team/authors",
+      );
+      authors.value = response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchLocations = async () => {
+    try {
+      const response = await axios.get(
+        "https://test-front.framework.team/locations",
+      );
+      locations.value = response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return {
+    paintings,
+    authors,
+    locations,
+    fetchPaintings,
+    countPages,
+    currentPage,
+    searchQuery,
+    fetchAuthors,
+    fetchLocations,
+  };
 });
 
 export default usePaintingsStore;

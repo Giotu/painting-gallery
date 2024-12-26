@@ -1,16 +1,35 @@
 <template>
   <div class="painting-card">
-    <img :src="baseUrl + painting.imageUrl" :alt="painting.name" />
+    <img :src="src" :alt="painting.name" />
     <div class="painting-card__info">
       <span class="painting-card__name">{{ painting.name }}</span>
       <span class="painting-card__date">{{ painting.created }}</span>
+      <div class="painting-card__additional-info">
+        <span class="painting-card__author">{{ authorName }}</span>
+        <span class="painting-card__location">{{ location }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import usePaintingsStore from "../../stores/paintings.ts";
+
+const store = usePaintingsStore();
 const baseUrl = "https://test-front.framework.team";
-defineProps(["painting"]);
+
+const props = defineProps(["painting"]);
+const src = computed(() => `${baseUrl}${props.painting.imageUrl}`);
+const authorName = computed(
+  () =>
+    store.authors.find((author) => author.id === props.painting.authorId)?.name,
+);
+const location = computed(
+  () =>
+    store.locations.find((loc) => loc.id === props.painting.locationId)
+      ?.location,
+);
 </script>
 
 <style scoped lang="scss">
@@ -25,18 +44,28 @@ defineProps(["painting"]);
   cursor: pointer;
   overflow: hidden;
 
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  &:hover .painting-card__name,
+  &:hover .painting-card__date {
+    transform: translateY(300%);
+  }
+
+  &:hover .painting-card__additional-info {
+    transform: translateX(0%);
+  }
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 
-  .painting-card__info {
+  .painting-card__info,
+  .painting-card__additional-info {
     background-color: $primary-black;
     position: absolute;
     bottom: 0;
@@ -47,6 +76,7 @@ defineProps(["painting"]);
     gap: 8px;
     max-width: clamp(14.75rem, 13.4167rem + 6.6667vw, 18.75rem);
     width: 100%;
+    transition: transform 0.2s ease-in-out;
 
     &::after {
       content: "";
@@ -64,12 +94,20 @@ defineProps(["painting"]);
     }
   }
 
+  .painting-card__additional-info {
+    transform: translateX(-100%);
+  }
+
   .painting-card__name,
-  .painting-card__date {
+  .painting-card__date,
+  .painting-card__author,
+  .painting-card__location {
+    transition: all 0.2s ease-in-out;
     text-transform: uppercase;
   }
 
-  .painting-card__name {
+  .painting-card__name,
+  .painting-card__author {
     font-family: $second-family;
     color: $primary-light-gray;
 
@@ -78,7 +116,8 @@ defineProps(["painting"]);
     }
   }
 
-  .painting-card__date {
+  .painting-card__date,
+  .painting-card__location {
     color: $accent-gold;
     font-size: 12px;
   }
