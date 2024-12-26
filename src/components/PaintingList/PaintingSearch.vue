@@ -36,7 +36,7 @@ const searchQuery = ref("");
 
 function debounceHandleSearch(ms: number) {
   let timeout: number;
-  return function () {
+  return function handleSearch() {
     clearTimeout(timeout);
     timeout = setTimeout(() => emit("search", searchQuery.value), ms);
   };

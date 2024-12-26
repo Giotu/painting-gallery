@@ -15,11 +15,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import usePaintingsStore from "../../stores/paintings.ts";
+import type { Painting } from "../../types/Painting";
 
 const store = usePaintingsStore();
 const baseUrl = "https://test-front.framework.team";
 
-const props = defineProps(["painting"]);
+const props = defineProps<{ painting: Painting }>();
 const src = computed(() => `${baseUrl}${props.painting.imageUrl}`);
 const authorName = computed(
   () =>
