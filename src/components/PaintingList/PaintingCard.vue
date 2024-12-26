@@ -41,6 +41,17 @@ defineProps(["painting"]);
     max-width: clamp(14.75rem, 13.4167rem + 6.6667vw, 18.75rem);
     width: 100%;
 
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      width: 2px;
+      height: 50%;
+      background-color: $accent-gold;
+    }
+
     @media (max-width: 768px) {
       padding: 12px;
     }
