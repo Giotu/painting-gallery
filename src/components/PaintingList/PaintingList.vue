@@ -29,6 +29,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .painting {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 20px;
 }

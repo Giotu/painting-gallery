@@ -78,6 +78,10 @@ const location = computed(
     width: 100%;
     transition: transform 0.2s ease-in-out;
 
+    [data-theme="light"] & {
+      background-color: $primary-white;
+    }
+
     &::after {
       content: "";
       position: absolute;
@@ -87,6 +91,10 @@ const location = computed(
       width: 2px;
       height: 50%;
       background-color: $accent-gold;
+
+      [data-theme="light"] & {
+        color: $accent-red;
+      }
     }
 
     @media (max-width: 768px) {
@@ -111,6 +119,10 @@ const location = computed(
     font-family: $second-family;
     color: $primary-light-gray;
 
+    [data-theme="light"] & {
+      color: $primary-black;
+    }
+
     @media (max-width: 380px) {
       font-size: 12px;
     }
@@ -120,6 +132,10 @@ const location = computed(
   .painting-card__location {
     color: $accent-gold;
     font-size: 12px;
+
+    [data-theme="light"] & {
+      color: $accent-red;
+    }
   }
   @media (max-width: 380px) {
     font-size: 8px;

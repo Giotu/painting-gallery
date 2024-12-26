@@ -12,6 +12,10 @@
 import TheHeader from "./components/Header/TheHeader.vue";
 import PaintingList from "./components/PaintingList/PaintingList.vue";
 import ThePagination from "./components/Pagination/ThePagination.vue";
+import useThemeStore from "./stores/theme.ts";
+
+const store = useThemeStore();
+store.initTheme();
 </script>
 
 <style scoped lang="scss">

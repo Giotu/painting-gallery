@@ -92,12 +92,24 @@ button {
   color: $primary-light-gray;
   cursor: pointer;
 
+  [data-theme="light"] & {
+    color: $primary-black;
+  }
+
   &.active-page {
     background-color: $secondary-black;
+  }
+
+  [data-theme="light"] &.active-page {
+    background-color: $secondary-light-gray;
   }
 }
 
 .pagination__next {
   transform: rotate(180deg);
+}
+
+[data-theme="light"] .arrow-icon-button path {
+  fill: red;
 }
 </style>

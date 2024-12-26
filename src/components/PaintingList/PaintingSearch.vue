@@ -58,6 +58,10 @@ const handleSearch = debounceHandleSearch(700);
   transform: translateY(-50%);
 }
 
+[data-theme="light"] .painting-search__icon path {
+  fill: $primary-black;
+}
+
 .painting-search__input {
   width: clamp(17.5rem, 16.3333rem + 5.8333vw, 21rem);
   background-color: $secondary-black;
@@ -67,9 +71,19 @@ const handleSearch = debounceHandleSearch(700);
   border-radius: 4px;
   transition: background-color 0.3s ease-in-out;
 
+  [data-theme="light"] & {
+    background-color: $primary-white;
+    color: $primary-black;
+    outline: 1px solid $primary-light-gray;
+  }
+
   &:focus {
     outline: none;
     background-color: $primary-dark-gray;
+  }
+
+  [data-theme="light"] &:focus {
+    background-color: $primary-light-gray;
   }
 }
 </style>
