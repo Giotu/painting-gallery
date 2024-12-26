@@ -6,6 +6,7 @@ import vueDevTools from "vite-plugin-vue-devtools";
 import eslintPlugin from "vite-plugin-eslint";
 
 export default defineConfig({
+  base: "/painting-gallery/",
   plugins: [vue(), vueDevTools(), eslintPlugin()],
   resolve: {
     alias: {

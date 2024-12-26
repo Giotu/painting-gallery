@@ -13,6 +13,7 @@ const usePaintingsStore = defineStore("paintings", () => {
   const authors = ref<Author[]>([]);
   const locations = ref<Location[]>([]);
   const searchQuery = ref("");
+  const isLoading = ref(false);
 
   const fetchPaintings = async (
     query?: string,
@@ -74,6 +75,7 @@ const usePaintingsStore = defineStore("paintings", () => {
     searchQuery,
     fetchAuthors,
     fetchLocations,
+    isLoading,
   };
 });
 

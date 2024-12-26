@@ -8,7 +8,10 @@
         :painting="painting"
       />
     </div>
-    <div v-else class="no-matches">
+    <div
+      v-else-if="!store.isLoading && store.paintings.length === 0"
+      class="no-matches"
+    >
       <p>No matches for {{ store.searchQuery }}</p>
       <p class="no-matches__hint">
         Please try again with a different spelling or keywords.
@@ -25,10 +28,14 @@ import usePaintingsStore from "../../stores/paintings.ts";
 
 const store = usePaintingsStore();
 
-onMounted(() => {
-  store.fetchPaintings();
-  store.fetchAuthors();
-  store.fetchLocations();
+onMounted(async () => {
+  store.isLoading = true;
+  await Promise.all([
+    store.fetchPaintings(),
+    store.fetchAuthors(),
+    store.fetchLocations(),
+  ]);
+  store.isLoading = false;
 });
 </script>
 
