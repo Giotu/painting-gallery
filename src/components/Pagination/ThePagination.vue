@@ -1,5 +1,5 @@
 <template>
-  <nav class="pagination">
+  <nav v-if="store.countPages > 1" class="pagination">
     <button
       class="pagination__prev"
       type="button"
