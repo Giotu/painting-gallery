@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import IconTheme from "./IconTheme.vue";
 </script>
 

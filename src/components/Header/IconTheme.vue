@@ -29,7 +29,7 @@
   </svg>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import useThemeStore from "../../stores/theme.ts";
 
 const store = useThemeStore();
