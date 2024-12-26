@@ -22,11 +22,18 @@ defineProps(["painting"]);
   max-height: 260px;
   aspect-ratio: 3 / 2;
   position: relative;
+  cursor: pointer;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   .painting-card__info {
