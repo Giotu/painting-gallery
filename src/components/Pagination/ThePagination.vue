@@ -54,7 +54,11 @@ const dispayPages = computed(() => {
     start < store.countPages &&
     start > 2
   ) {
-    pages = [start - 1, start, start + 1];
+    if (start > 3 && start < store.countPages - 1) {
+      pages = [1, "...", start - 1, start, start + 1, store.countPages];
+    } else {
+      pages = [start - 1, start, start + 1];
+    }
   } else if (store.countPages < maxDisplayPage) {
     for (let i = 1; i <= store.countPages; i += 1) {
       pages.push(i);
