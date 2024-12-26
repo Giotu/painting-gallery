@@ -23,14 +23,6 @@ defineProps(["painting"]);
   aspect-ratio: 3 / 2;
   position: relative;
 
-  // @media (max-width: 1024px) {
-  //   flex: 0 1;
-  // }
-
-  // @media (max-width: 767px) {
-  //   flex: 0 1
-  // }
-
   img {
     width: 100%;
     height: 100%;
@@ -62,10 +54,18 @@ defineProps(["painting"]);
   .painting-card__name {
     font-family: $second-family;
     color: $primary-light-gray;
+
+    @media (max-width: 380px) {
+      font-size: 12px;
+    }
   }
 
   .painting-card__date {
     color: $accent-gold;
+    font-size: 12px;
+  }
+  @media (max-width: 380px) {
+    font-size: 8px;
   }
 }
 </style>

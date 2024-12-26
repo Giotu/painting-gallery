@@ -41,7 +41,7 @@ function debounceHandleSearch(ms: number) {
     timeout = setTimeout(() => emit("search", searchQuery.value), ms);
   };
 }
-const handleSearch = debounceHandleSearch(1000);
+const handleSearch = debounceHandleSearch(700);
 </script>
 
 <style scoped lang="scss">
@@ -59,8 +59,7 @@ const handleSearch = debounceHandleSearch(1000);
 }
 
 .painting-search__input {
-  max-width: 336px;
-  width: 100%;
+  width: clamp(17.5rem, 16.3333rem + 5.8333vw, 21rem);
   background-color: $secondary-black;
   border: none;
   padding: 8px 20px 8px 48px;
